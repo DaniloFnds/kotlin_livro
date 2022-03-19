@@ -1,7 +1,5 @@
 package capitulo2
 
-import com.sun.org.apache.xml.internal.utils.XMLCharacterRecognizer
-
 /*
 todos os modificadores em kotlin eh public
 
@@ -36,6 +34,17 @@ class teste {
 
 interface Focusable {
 
+}
+
+
+class LengthCounter {
+    //modificar o acesso a propriedades mutavel colocado o set como private
+    var counter: Int = 0
+   private set
+
+    fun addWord(word: String) {
+        counter += word.length
+    }
 }
 
 

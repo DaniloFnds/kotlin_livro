@@ -44,6 +44,9 @@ class User2 constructor(_nickname: String) {
 //montar o construtor primario implicito, sem precisar criar o bloco de inicialiacao init {} é q feito no val nome = nome
 class User3(_nickname: String) {
     val nickname = _nickname
+
+    //sobrescrever o toString
+    override fun toString() = "User3( nickname: $nickname"
 }
 
 //podemos criar a variavel direto no construtor primario, assim ela sera inicializada direto no cosntrutor
@@ -131,3 +134,18 @@ fun main() {
 
 }
 
+//data class com object dentro
+//dessa forma, nossa class Person1 tem uma instancia de um comparator
+data class Person1(val name: String) {
+    object NameComparator: Comparator<Person1> {
+        override fun compare(o1: Person1, o2: Person1): Int {
+            return o1.name.compareTo(o2.name)
+        }
+
+    }
+}
+
+fun testeDataClassComObject() {
+    val persons = listOf(Person1("Danio"), Person1("Fernandes"))
+    println(persons.sortedWith(Person1.NameComparator))
+}
