@@ -56,7 +56,7 @@ open class User5(val nickName: String, val isSubscribed: Boolean = false)
 
 
 class UserImpl : User5 {
-    constructor(idade: Int): this()
+    constructor(idade: Int) : this()
 
     //isso é o construtor secundario
     constructor(nickName: String) : super(nickName) // para chamar o construtor da superclass, colocamos o super(e o construtor)
@@ -70,6 +70,64 @@ class UserImpl : User5 {
     constructor() : this("sadsa", true) {
 
     }
+
+}
+
+interface IUser {
+    val nickname: String
+}
+
+//podemos fazer o override de propriedade qesta na interface, direto no construtor da class q esta implmenetando
+class PrivateUser(override val nickname: String) : IUser
+
+//fazer o override da propriedade da interface, pelo get()
+class SubscribingUser(val email: String) : IUser {
+    override val nickname: String
+        get() = email.substringBefore('@')
+}
+
+
+//podemos passar o override da propriedade da interface, chamando uma funcao
+class FacebookUser(val accountId: Int) : IUser {
+    override val nickname = getFacebookName(accountId)
+
+    private fun getFacebookName(accountId: Int): String {
+        return "algo"
+    }
+}
+
+
+//podemos sobrescrever a propriedade passando o get() e utilizar alguma outra propriedade da interface
+//assim qd chamarem a popriedade q tem o get() personalizado, sera retornado o valor personalizado
+
+interface UserBackfield {
+    val email: String
+    val nickname: String
+        get() = email + "teste"
+}
+
+//podemos modificar o setter tbm para q sempre q alterar o valor da propriedade, possamos fazer algo com o valor anterior
+class UserBackfieldImpl(override val email: String) : UserBackfield {
+
+    //podemos alterar o setter da propriedade e olhar o backing field dele
+    var lastName: String = "nao_especificado"
+    set(value) {
+        println("""
+            o sobrenome do email: $email foi alterado de $field para $value
+        """.trimIndent())
+        field = value
+    }
+
+}
+
+fun main() {
+    val user: UserBackfield = UserBackfieldImpl("danilo")
+    println(user.nickname)
+
+    val userImpl = UserBackfieldImpl("danilo@danilo.com")
+    userImpl.lastName = "fernandes"
+    println(userImpl.lastName)
+
 
 }
 
