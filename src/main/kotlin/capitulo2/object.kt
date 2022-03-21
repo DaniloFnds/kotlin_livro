@@ -73,3 +73,28 @@ fun testeObjectAnonimo() {
     }
     println(anonimaObject.teste())
 }
+
+
+fun objetcReutilizados() {
+    //quando criamos um object de uma interface, e utilizamos em outro lugar( tipo uma interface funcional )
+    /*
+    mas se nao utilizar nenhuma variavel externa do scopo do objeto, sempre será chamado o mesmo objeto
+    caso utilize algo externo, o compilador ira criar uma class para o objeto, e assim será criaod sempre uma instancia
+     */
+    handlerComputatation(100)
+}
+fun handlerComputatation(id: Int) {
+    postPoneComputation(id, object : Runnable {
+        override fun run() {
+            println(id)//usando uma variavel de outro externo, sera criado uma instancia pra cada
+        }
+
+    })
+}
+
+fun postPoneComputation(id:Int, runnable: Runnable) {
+    runnable.run() {
+        //nao utilizando nenhuma variavel externa, sera o mesmo runnable para todos
+        println(40)
+    }
+}

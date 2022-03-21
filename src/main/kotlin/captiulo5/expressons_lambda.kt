@@ -67,3 +67,31 @@ fun main() {
     //a funcao run executa uma funcao interna
     run({println(45)})
 }
+
+fun funcaoSAM() {
+    //criar uma funcao lambda, de uma interface funcional
+    //podemos instanciar uma interface funcional, q pode ser utilizada por varias chaamadas a msm instancia
+
+    //podemos criar uma funcao q retorna a instancia
+    val putAllDone = createAlLDoneRunnable()
+
+    //ou podemos criar a variavel direto com a lambda
+    val putAllDoneVariable = Runnable {
+        println("teste")
+    }
+
+    executaAllDoneRunnable(putAllDone)
+    executaAllDoneRunnable(putAllDoneVariable)
+
+}
+
+//mas para criar essa instancia lambda,precisa ser uma interface funcional( q aceita apenas um metodo)
+fun createAlLDoneRunnable(): Runnable {
+    return Runnable {
+        println("all done")
+    }
+}
+
+fun executaAllDoneRunnable(runnable: Runnable) {
+    runnable.run()
+}
