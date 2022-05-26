@@ -1,5 +1,6 @@
 package capitulo2
 
+
 /*
 
 todas as classes em kotlin tem o seu metodo marcado como final, nao sendo possivel sobrescrever eles
@@ -148,4 +149,9 @@ data class Person1(val name: String) {
 fun testeDataClassComObject() {
     val persons = listOf(Person1("Danio"), Person1("Fernandes"))
     println(persons.sortedWith(Person1.NameComparator))
+}
+
+
+fun teste22() {
+    "danilo".byteInputStream()
 }

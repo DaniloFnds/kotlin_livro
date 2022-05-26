@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.6.0"
     application
 }
 
@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
 }
 
 tasks.test {
