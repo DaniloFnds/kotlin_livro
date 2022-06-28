@@ -1,5 +1,7 @@
 package capitulo6
 
+import capitulo7.test222e
+
 /*
 Propriedades nullable sao referencias q podem receber null como valor,
 entao, colocamos ? no final para dizer como: String is null? como uma pergunta
@@ -22,5 +24,5 @@ fun exec() {
 
 
 fun main() {
-
+test222e()
 }

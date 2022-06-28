@@ -25,3 +25,36 @@ fun exec11() {
     val vacation = now..now.plusDays(10)
     println(now.plusWeeks(1) in vacation)
 }
+
+suspend fun teste() {
+    
+}
+
+
+open class Usuario(private val nome: String) {
+
+
+}
+object SimpleSingleton  {
+    var nome = "Danilo"
+
+}
+
+fun main() {
+//    val name = "Danilo"
+//
+//    val sobreNome = "Fernandes"
+//
+//    print(name === sobreNome)
+
+//    var usuario = Usuario()
+
+    val user = Usuario("adas").
+
+
+
+}
+
+internal fun test222e() {
+
+}
